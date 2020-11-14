@@ -33,23 +33,37 @@ const uppercaseEl = document.getElementById('uppercase')
 const lowercaseEl = document.getElementById('lowercase')
 const numbersEl = document.getElementById('numbers')
 const symbolsEl = document.getElementById('symbols')
-const generate.btnEl = document.getElementById('generate.btn')
-const clipboard.btnEl = document.getElementById('clipboard.btn')
+const generateEl = document.getElementById('generate')
+const clipboardEl = document.getElementById('clipboard')
 
 
 
 //created object of Functions
-cont randomFunc = {
+// This turns the Generator Functions into objects to be referenced later
+const randomFunc = {
   lower: getRandomLower,
   upper: getRandomUpper,
   number: getRandomNumber,
   symbol: getRandomSymbol
-}
+};
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+//This is the event listener that activates uppon "click"
+generateBtn.addEventListener("click", () => {
+  const length = lengthEl.value;
+
+  //These const .checked will check to see if elements are selected
+  const hasLower = lowercaseEl.checked;
+  const hasUpper = uppercaseEl.checked;
+  const hasNumbers = numbersEl.checked;
+  const hasSymbols = symbolsEl.checked;
+  
+  console.log(hasLower,hasNumbers,hasSymbols,hasUpper);
+})
+
 
 //Generator Functions 
+// These functions randomly generate each character
 
 function getRandomLower () {
   return String.fromCharCode(Math.floor(Math.random() * 26)+ 97)

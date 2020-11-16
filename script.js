@@ -36,6 +36,24 @@ generate.addEventListener('click', () => {
   passwordEl.innerText = generatePassword(hasLower,hasUpper, hasNumbers, hasSymbols, length);
 });
 
+//Step 8: copy password to clipboard
+
+//added click event listener to clipboardEl. text area is created in html. 
+clipboardEl.addEventListener('click', () => {
+  const textarea = document.createElement('textarea');
+  const password = generatePassword.innerText;
+
+  //if nothing in password, return nothing 
+  if(!password) {
+    return;
+  }
+
+  clipboardEl.Select();
+
+  document.execCommand("copy");
+});
+
+
 // Step 7: Generate password function
 function generatePassword(lower, upper, number, symbol, length) {
 
@@ -44,12 +62,50 @@ function generatePassword(lower, upper, number, symbol, length) {
 // 3. loop over length and call generator function for each type of function
 // 4. add final pw to password variable and return it 
 
-let generaterPassword = '';
+let generatedPassword = '';
 
 const typesCount = lower + upper + number + symbol;
 
-console.log('typesCount: ', typesCount);
+//console.log('typesCount: ', typesCount);
+
+//creates array and curly braces sets keys as typesCount specific to their name 
+const typesArr = [{lower}, {upper}, {number}, {symbol}]
+
+//the .filter loops through each item and filters out whatever part of the array returns false. so filters through the values of items starting at 0, the first item. which ever item is not selected will have a 'false' value and therefore be filtered out from the array
+.filter(
+  item => Object.values(item)[0]
+  );
+
+//console.log('typesArr: ', typesArr)
+
+//if none are checked, then return nothing
+if(typesCount === 0) {
+  return '';
 }
+
+//this cycles throught the array, adding each type of key/function (lower, upper, number, symbol) for the given length of the array
+for(let i=0; i < length; i += typesCount) {
+  typesArr.forEach(type => {
+
+    const funcName = Object.keys(type)[0];
+    //console.log('funcName: ', funcName);
+
+    generatedPassword += randomFunc[funcName]();
+  });
+  }
+
+// because the length is based on the typesCount, the length of the password is not the input length, so we have to slice the generatedPassword starting at the first key [0] by the length 
+
+//console.log(generatedPassword.slice(0, length));
+
+//so, we will create a constant and call it "finalPassword and set it to the sliced version of the function"
+const finalPassword = generatedPassword.slice(0, length);
+
+//now that we have our password to the right length, we can sumply return that 
+
+return finalPassword;
+}
+
 
 
 //Step 1:Generator Functions 
@@ -71,3 +127,5 @@ function getRandomSymbol () {
   const symbols = '!@#$%^&*(){}[]=<>/,.';
   return symbols [Math.floor(Math.random() * symbols.length)];
 }
+
+

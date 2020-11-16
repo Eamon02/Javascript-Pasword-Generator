@@ -1,33 +1,6 @@
-// Assignment Code
-var generateBtn = document.querySelector("#generate");
+//Step 3: Grabbed DOM elements
 
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
-}
-
-
-
-
-// on button click, alter <p> to generate random sequence of character using list. make sure document does not bubble up or reset on enter if form 
-
-//seperate list for each option, character vs caps vs 
-
-//add prompts and confirms to ask user qs - caps, no caps, special characters - based on answers add list 
-
-//arrays - loops
-//prompts and confirms 
-//math.random 
-//how long will you like it to be?
-
-
-//DOM elements
-
-const PasswordEl = document.getElementById('Password')
+const passwordEl = document.getElementById('password')
 const lengthEl = document.getElementById('length')
 const uppercaseEl = document.getElementById('uppercase')
 const lowercaseEl = document.getElementById('lowercase')
@@ -38,7 +11,7 @@ const clipboardEl = document.getElementById('clipboard')
 
 
 
-//created object of Functions
+//Step 2: Turned Functions into Objects
 // This turns the Generator Functions into objects to be referenced later
 const randomFunc = {
   lower: getRandomLower,
@@ -47,22 +20,39 @@ const randomFunc = {
   symbol: getRandomSymbol
 };
 
-// Add event listener to generate button
+// Step 4: Added event listener to generate button
 //This is the event listener that activates uppon "click"
-generateBtn.addEventListener("click", () => {
-  const length = lengthEl.value;
+generate.addEventListener('click', () => {
+  // the "+" parses lengthEl as number from list object
+  const length = +lengthEl.value;
 
-  //These const .checked will check to see if elements are selected
+  //Step 5: These const .checked will check to see if elements are selected
   const hasLower = lowercaseEl.checked;
   const hasUpper = uppercaseEl.checked;
   const hasNumbers = numbersEl.checked;
   const hasSymbols = symbolsEl.checked;
   
-  console.log(hasLower,hasNumbers,hasSymbols,hasUpper);
-})
+  //Step 6: This calls the innertext of the password El 
+  passwordEl.innerText = generatePassword(hasLower,hasUpper, hasNumbers, hasSymbols, length);
+});
+
+// Step 7: Generate password function
+function generatePassword(lower, upper, number, symbol, length) {
+
+// 1. initialize password variable - a string that will continuously build the password 
+// 2. filter out checked unchecked El from password
+// 3. loop over length and call generator function for each type of function
+// 4. add final pw to password variable and return it 
+
+let generaterPassword = '';
+
+const typesCount = lower + upper + number + symbol;
+
+console.log('typesCount: ', typesCount);
+}
 
 
-//Generator Functions 
+//Step 1:Generator Functions 
 // These functions randomly generate each character
 
 function getRandomLower () {

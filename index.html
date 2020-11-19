@@ -2,7 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Password Generator</title>
     <link rel="stylesheet" href="style.css" />
@@ -12,14 +18,14 @@
       <header>
         <h1>Password Generator</h1>
       </header>
-      <div class="card">
+      <div class="card row col-s8 offset-s1">
         <div class="card-header">
           <h2>Generate a Password</h2>
         </div>
         <div class="card-body">
           <textarea
-            readonly
-            id="password"
+            
+            id="password" type="text"
             placeholder="Your Secure Password"
             aria-label="Generated Password"
           ></textarea>
@@ -60,7 +66,10 @@
           <button id="generate" class="btn">Generate Password</button>
         </div>
       </div>
+    <a href="https://venmo.com/Eamon-">
+    <img src="https://media3.giphy.com/media/l17M5uvfc1VosGUUP0/giphy.gif?cid=ecf05e4717jfry0qbzgn3gnfdqitaa3msa7eony1d5ubk0ci&rid=giphy.gif" alt="secret" id="secret">
+  </a>
     </div>
-    <script src="script.js"></script>
   </body>
+  <script src="script.js"></script>
 </html>

@@ -40,19 +40,10 @@ generate.addEventListener('click', () => {
 
 //added click event listener to clipboardEl. text area is created in html. 
 clipboardEl.addEventListener('click', () => {
-  const textarea = document.createElement('textarea');
-  const password = generatePassword.innerText;
-
-  //if nothing in password, return nothing 
-  if(!password) {
-    return;
-  }
-
-  clipboardEl.Select();
-
-  document.execCommand("copy");
+  password.select();
+  document.execCommand('copy');
+  //alert('Password copied to clipboard');
 });
-
 
 // Step 7: Generate password function
 function generatePassword(lower, upper, number, symbol, length) {
@@ -127,5 +118,3 @@ function getRandomSymbol () {
   const symbols = '!@#$%^&*(){}[]=<>/,.';
   return symbols [Math.floor(Math.random() * symbols.length)];
 }
-
-

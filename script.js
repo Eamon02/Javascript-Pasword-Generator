@@ -118,3 +118,7 @@ function getRandomSymbol () {
   const symbols = '!@#$%^&*(){}[]=<>/,.';
   return symbols [Math.floor(Math.random() * symbols.length)];
 }
+
+// JUST FOR FUN 
+
+//generateEl.addEventListener('click', () => {

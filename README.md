@@ -6,6 +6,10 @@ ___
 
 ## Links
 [Link to live site](https://eamon02.github.io/Javascript-Pasword-Generator/)
+
+___
+## Sources
+[Traversy Media](https://www.youtube.com/watch?v=duNmhKgtcsI)
 ___
 ## Photos
 
